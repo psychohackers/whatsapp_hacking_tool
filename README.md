@@ -1,72 +1,242 @@
-# WhatsAppPentest Tool (Prototype)
+# 🔐 WhatsApp Forensics & Pentest Utility v2.0
 
-A simple Python-based utility to help security testers work with WhatsApp exported chat and images.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python" />
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-informational?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-Research%20Only-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Price-%24230%20(was%20%24530)-success?style=for-the-badge" />
+</p>
 
-## Features
+---
 
-- Modify exported WhatsApp chat text with search/replace
-- Change image references in chat text (`old.jpg` -> `new.jpg`)
-- Modify image binary data (append hidden payload)
-- Add basic PNG metadata for embedded notes
+> ⚠️ **LEGAL NOTICE**: This tool is intended **solely for authorized security research, digital forensics investigations, and penetration testing with explicit written permission**. Any unauthorized use is illegal and strictly prohibited. You bear full legal responsibility for how you use this software.
 
-## Usage
+---
 
-1. Install dependencies
+## 💰 Pricing
+
+| Plan | Price | Details |
+|------|-------|---------|
+| ~~Original Price~~ | ~~$530~~ | — |
+| **Special Offer Price** | **$230** | ✅ Save **$300** — Lifetime updates + Email support included |
+
+> 🎯 **Limited-time offer.** Single-user, non-commercial research license. Purchase includes access to all future v2.x updates and dedicated email support.
+
+---
+
+## 🧰 What Is This Tool?
+
+**WhatsApp Forensics & Pentest Utility v2.0** is a professional-grade Python-based command-line tool designed for:
+
+- **Digital forensics investigators** working with exported WhatsApp chat data
+- **Penetration testers** performing authorized testing on mobile messaging applications
+- **Security researchers** studying WhatsApp chat file structures and image steganography
+
+The tool provides both an **interactive menu-driven interface** (no command memorization needed) and a **traditional CLI mode** for scripting and automation.
+
+---
+
+## ✨ Features
+
+### 🗨️ Chat Analysis & Modification
+| Feature | Description |
+|---------|-------------|
+| **Chat Text Modifier** | Find and replace any keyword or phrase inside a `.txt` exported chat |
+| **Image Reference Replacer** | Swap out image filenames referenced within a chat log |
+| **Chat Metadata Analyser** | Parse participants, message counts, media count from a chat export |
+| **Word Frequency Analyser** | Visualize the top N most-used words in a chat (with bar graph) |
+
+### 🖼️ Image Forensics
+| Feature | Description |
+|---------|-------------|
+| **Image Payload Embedder** | Append hidden payload bytes into JPEG/PNG image files (steganography testing) |
+| **Image Metadata Editor** | Embed pentest notes directly into PNG metadata fields |
+
+### 🤖 AI-Powered Features *(optional)*
+| Feature | Description |
+|---------|-------------|
+| **AI Chat Paraphraser** | Paraphrase an entire exported chat using a local T5 AI model |
+| **AI Chat Generator** | Generate a realistic synthetic WhatsApp chat from a text prompt |
+
+---
+
+## 🖥️ Interactive Mode (Recommended)
+
+Launch with no arguments to enter the full interactive menu:
 
 ```bash
-python3 -m pip install Pillow
-python3 -m pip install transformers sentencepiece
+python3 whatsapppentest.py
 ```
 
-2. Run chat text modifications
+You'll see a **professional banner** with pricing info and a numbered menu:
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║       WhatsApp Forensics & Pentest Utility  v2.0                ║
+║  Original Price : $530  │  Special Offer : $230  │  Save $300!  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+   1.  Chat Text Modifier          Replace keywords/phrases inside a chat
+   2.  Image Reference Replacer    Update image filenames in a chat .txt
+   3.  Image Payload Embedder      Append hidden payload bytes into JPG/PNG
+   4.  Image Metadata Editor       Embed a pentest note into PNG metadata
+   5.  AI Chat Paraphraser         Re-phrase chat using a local AI model
+   6.  AI Chat Generator           Generate synthetic chat from a prompt
+   7.  Chat Metadata Analyser      Parse chat statistics & participant list
+   8.  Word Frequency Analyser     Show most-used words in a chat
+   9.  About / Pricing             Tool info and license details
+  10.  Exit
+```
+
+Simply type a number and press **Enter**. The tool guides you step-by-step with prompts for all required inputs.
+
+---
+
+## ⌨️ CLI (Script) Mode
+
+For automation or CI/CD pipelines, use command-line flags directly:
+
+### 1. Install Dependencies
 
 ```bash
-python3 whatsapppentest.py --chat chat.txt --chat-out chat-modified.txt --search "old text" --replace "new text"
+pip install Pillow
+pip install transformers sentencepiece    # Optional – only for AI features
 ```
 
-3. Replace image reference in chat
+### 2. Chat Text Search & Replace
 
 ```bash
-python3 whatsapppentest.py --chat chat.txt --chat-out chat-modified.txt --replace-img-ref "IMG-20250101-WA0001.jpg" "new-image.jpg"
+python3 whatsapppentest.py \
+  --chat chat.txt \
+  --chat-out chat-modified.txt \
+  --search "original phrase" \
+  --replace "replacement phrase"
 ```
 
-4. Modify an image by embedding extra data
+### 3. Replace an Image Reference in Chat
 
 ```bash
-python3 whatsapppentest.py --image whatsapp.jpg --image-out whatsapp-modified.jpg --embed-data "INVISIBLE_PAYLOAD"
+python3 whatsapppentest.py \
+  --chat chat.txt \
+  --chat-out chat-with-new-ref.txt \
+  --replace-img-ref "IMG-20250101-WA0001.jpg" "evidence-photo.jpg"
 ```
 
-5. Add PNG metadata note (prototype)
+### 4. Embed Hidden Payload into an Image
 
 ```bash
-python3 whatsapppentest.py --image whatsapp.png --image-out whatsapp-modified.png --metadata "pentest note"
+python3 whatsapppentest.py \
+  --image whatsapp.jpg \
+  --image-out whatsapp-modified.jpg \
+  --embed-data "HIDDEN_TEST_PAYLOAD"
 ```
 
-6. AI-enhanced chat paraphrase (optional)
+### 5. Add Metadata Note to PNG
 
 ```bash
-python3 whatsapppentest.py --chat chat.txt --chat-out chat-ai.txt --ai-paraphrase --ai-model t5-small
+python3 whatsapppentest.py \
+  --image screenshot.png \
+  --image-out screenshot-tagged.png \
+  --metadata "Forensic case #2025-001"
 ```
 
-7. AI-generated sample chat (optional)
+### 6. Analyse Chat Metadata
 
 ```bash
-python3 whatsapppentest.py --chat-out chat-generated.txt --ai-generate "friendly security team discussing updates" --ai-model t5-small
+python3 whatsapppentest.py --chat chat.txt --analyse
 ```
 
-## Minimum system requirements
+### 7. Word Frequency Report
 
-- CPU: Intel Core i5 (or equivalent)
-- RAM: 16GB
-- GPU: NVIDIA RTX 3050 (for optional local image processing acceleration)
-- Storage: 512GB SSD minimum
-- OS: Linux, macOS, Windows
+```bash
+python3 whatsapppentest.py --chat chat.txt --word-freq
+```
 
-## Security and ethics
+### 8. AI Paraphrase Chat *(requires transformers)*
 
-This tool is for authorized security testing only. Do not use it to compromise any system or data without explicit permission.
+```bash
+python3 whatsapppentest.py \
+  --chat chat.txt \
+  --chat-out chat-paraphrased.txt \
+  --ai-paraphrase \
+  --ai-model t5-small
+```
 
-## Notes
+### 9. AI Generate Synthetic Chat *(requires transformers)*
 
-- Make sure to use exported WhatsApp chat text (`.txt`) from WhatsApp's built-in export feature.
-- This is a prototype; customize it for your workflow and targets.
+```bash
+python3 whatsapppentest.py \
+  --chat-out synthetic-chat.txt \
+  --ai-generate "two friends discussing a weekend trip" \
+  --ai-model t5-small
+```
+
+---
+
+## 🖥️ System Requirements
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| **CPU** | Intel Core i5 (8th gen+) | Intel Core i7 / AMD Ryzen 7 |
+| **RAM** | 16 GB | 32 GB |
+| **GPU** | NVIDIA RTX 3050 (for AI features) | NVIDIA RTX 3060+ |
+| **Storage** | 512 GB SSD | 1 TB NVMe SSD |
+| **OS** | Linux, macOS, Windows 10+ | Kali Linux / Ubuntu 22.04 |
+| **Python** | 3.8+ | 3.11+ |
+
+> The GPU is **only required** for AI-powered features (paraphrase/generate). All other features run on CPU.
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/whatsapp-pentest-tool.git
+cd whatsapp-pentest-tool
+
+# Install core dependency
+pip install Pillow
+
+# (Optional) Install AI dependencies
+pip install transformers sentencepiece torch
+```
+
+---
+
+## 📁 Input File Format
+
+This tool works with **WhatsApp's native export format**. To export a chat:
+
+1. Open WhatsApp → go to a chat
+2. Tap the **⋮ menu** → **More** → **Export Chat**
+3. Choose **Without Media** (exports a `.txt` file)
+4. Transfer the `.txt` file to your analysis machine
+
+The exported file follows this pattern:
+```
+01/15/2025, 10:32 AM - Alice: Hey, are you there?
+01/15/2025, 10:33 AM - Bob: Yes, give me a moment.
+01/15/2025, 10:35 AM - Alice: IMG-20250115-WA0001.jpg (file attached)
+```
+
+---
+
+## 🛡️ Ethics & Legal Disclaimer
+
+- ✅ **Authorized use**: Forensics investigations with lawful access, penetration tests with written permission, academic research in controlled environments.
+- ❌ **Prohibited use**: Accessing another person's data without consent, distributing modified chat logs as genuine, any activity that violates local laws.
+
+The developers of this tool **accept no liability** for misuse. By using this software you agree to comply with all applicable laws and regulations.
+
+---
+
+## 📧 Support & License
+
+- **License**: Single-User Non-Commercial Research License
+- **Support**: Email support included with purchase
+- **Updates**: Lifetime v2.x updates included
+
+---
+
+*WhatsApp Forensics & Pentest Utility v2.0 — Professional Security Research Platform*
