@@ -18,8 +18,8 @@
 
 | Plan | Price | Details |
 |------|-------|---------|
-| ~~Original Price~~ | ~~$530~~ | — |
-| **Special Offer Price** | **$230** | ✅ Save **$300** — Lifetime updates + Email support included |
+| ~~Original Price~~ | ~~$800~~ | — |
+| **Special Offer Price** | **$400** | ✅ Save **$400** — Lifetime updates + Email support included |
 
 > 🎯 **Limited-time offer.** Single-user, non-commercial research license. Purchase includes access to all future v2.x updates and dedicated email support.
 
