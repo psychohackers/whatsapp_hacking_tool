@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-informational?style=for-the-badge" />
   <img src="https://img.shields.io/badge/License-Research%20Only-red?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Price-%24230%20(was%20%24530)-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Author-redrecon-blueviolet?style=for-the-badge" />
 </p>
 
 ---
@@ -175,6 +176,8 @@ python3 whatsapppentest.py \
 
 ## 🖥️ System Requirements
 
+### Main Host Machine
+
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
 | **CPU** | Intel Core i5 (8th gen+) | Intel Core i7 / AMD Ryzen 7 |
@@ -183,6 +186,20 @@ python3 whatsapppentest.py \
 | **Storage** | 512 GB SSD | 1 TB NVMe SSD |
 | **OS** | Linux, macOS, Windows 10+ | Kali Linux / Ubuntu 22.04 |
 | **Python** | 3.8+ | 3.11+ |
+
+### Encryption Analysis Module — Dedicated Hardware
+
+| Component | Requirement | Notes |
+|-----------|-------------|-------|
+| **Device** | Raspberry Pi Zero 2W | Required for the offline encryption key analysis module |
+| **OS** | Raspberry Pi OS Lite (64-bit) | Headless setup recommended |
+| **RAM** | 512 MB (on-board) | Sufficient for key schedule analysis tasks |
+| **Storage** | 16 GB microSD (Class 10 / UHS-I) | Stores wordlists and key fragments |
+| **Connectivity** | Wi-Fi 802.11 b/g/n | Used to sync results back to the host machine |
+| **Power** | 5V / 2.5A micro-USB | Stable power supply recommended for long-running jobs |
+
+> [!IMPORTANT]
+> The **Raspberry Pi Zero 2W** is used as a dedicated offline co-processor for the encryption breaking module. Its low power draw (~0.4W idle) makes it ideal for running extended key-cracking dictionary attacks without burdening the main host machine. Connect it to the host via Wi-Fi or USB-OTG and run the encryption module in headless mode.
 
 > The GPU is **only required** for AI-powered features (paraphrase/generate). All other features run on CPU.
 
