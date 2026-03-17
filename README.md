@@ -74,7 +74,7 @@ You'll see a **professional banner** with pricing info and a numbered menu:
 ```
 ╔══════════════════════════════════════════════════════════════════╗
 ║       WhatsApp Forensics & Pentest Utility  v2.0                ║
-║  Original Price : $530  │  Special Offer : $230  │  Save $300!  ║
+║  Original Price : $800  │  Special Offer : $400  │  Save $400!  ║
 ╚══════════════════════════════════════════════════════════════════╝
 
    1.  Chat Text Modifier          Replace keywords/phrases inside a chat
